@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Contacto</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+
+<div class="agrupar">
+
+    <header class="cabecera">
+        <h1>Contacto</h1>
+    </header>
+
+    <nav class="menu">
+        <ul>
+            <li><a href="index.html">Principal</a></li>
+            <li><a href="ayuda.html">Ayuda</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <section class="seccion">
+        <article>
+            <h2>Formulario de contacto</h2>
+
+            <form id="formulario">
+                <p>Nombre:</p>
+                <input type="text" id="nombre">
+
+                <p>Correo:</p>
+                <input type="email" id="correo">
+
+                <p>Mensaje:</p>
+                <textarea id="mensaje"></textarea>
+
+                <br><br>
+                <button type="submit">Enviar</button>
+            </form>
+
+            <!-- Mensaje dinámico -->
+            <p id="respuesta"></p>
+
+        </article>
+    </section>
+
+    <aside class="columna">
+        <blockquote>Teléfono: 123456789</blockquote>
+        <blockquote>Email: contacto@misitio.com</blockquote>
+    </aside>
+
+    <footer class="pie">
+        Página de contacto
+    </footer>
+
+</div>
+
+<!-- Conexión con JavaScript -->
+<script src="js/script.js"></script>
+
+</body>
+</html>
