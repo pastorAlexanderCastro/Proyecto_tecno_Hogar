@@ -60,4 +60,13 @@ app.post("/agregar", (req, res) => {
   );
 });
 
+//LISTAR PRODUCTOS A PAGINA ADMINISTRADOR✅
+app.get("/administracion/productos", (req, res) => {
+  const sql = "SELECT * FROM productos";
+  db.query(sql, (err, results) => {
+    if (err) return res.status(500).send("Error");
+    res.json(results);
+  });
+});
+
 app.listen(3000, () => console.log("Servidor en http://localhost:3000"));

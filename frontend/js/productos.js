@@ -1,5 +1,7 @@
 //CARGAR PRODUCTOS A LA PAGINA PRODUCTOS✅
 
+//CARGAR PRODUCTOS
+
 document.addEventListener("DOMContentLoaded", cargarProductosDesdeBD);
 async function cargarProductosDesdeBD() {
   try {
@@ -67,7 +69,6 @@ async function cargarProductosDesdeBD() {
 
 // AGREGAR PRODUCTOS ✅
 
-// funcion para Guardar nuevos productos.
 const formularioProductos = document.getElementById("form-producto");
 
 formularioProductos.addEventListener("submit", async (e) => {
@@ -103,3 +104,39 @@ formularioProductos.addEventListener("submit", async (e) => {
     console.error("Error de conexión:", error);
   }
 });
+
+// LISTAR PRODUCTOS ADMINISTRADOR
+//AGREGAR PRODUCTOS A LA PAGINA ADMINISTRACIÓN
+document.addEventListener("DOMContentLoaded", cargarProductosAdministracion);
+async function cargarProductosAdministracion() {
+  try {
+    const respuesta = await fetch(
+      "http://localhost:3000/administracion/productos",
+    );
+    const productos = await respuesta.json();
+    console.log(productos);
+
+    const tbody = document.getElementById("tabla-productos");
+    tbody.innerHTML = ""; // Limpiamos solo el cuerpo de la tabla
+
+    productos.forEach((p) => {
+      const fila = document.createElement("tr");
+      console.log(p);
+
+      fila.innerHTML = `
+          <td>${p.nombre}</td>
+          <td>${p.categoria}</td>
+          <td>$${p.precio}</td>
+          <td>${p.stock}</td>
+          <td><img src="${p.imagen}" width="50" alt="img"></td>
+          <td>
+              <button data-id="${p.id}" class="btn btn-sm btn-warning btn-editar">Editar</button>
+              <button data-id="${p.id}" class="btn btn-sm btn-danger btn-eliminar">Eliminar</button>
+          </td>
+      `;
+      tbody.appendChild(fila);
+    });
+  } catch (error) {
+    console.error("Error al cargar:", error);
+  }
+}
