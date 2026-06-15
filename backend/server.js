@@ -70,14 +70,31 @@ app.get("/administracion/productos", (req, res) => {
 });
 
 // ELIMINAR PRODUCTOS PAGINA ADMINISTRADOR ✅
-
-app.delete("/eliminar/productos/id", (req, res) => {
+app.delete("/eliminar/productos/:id", (req, res) => {
   db.query(
     "DELETE FROM productos WHERE id = ?",
     [req.params.id],
     (err, result) => {
       if (err) return res.status(500).json({ error: "Error al eliminar" });
       res.json({ mensaje: "Eliminado con éxito" });
+    },
+  );
+});
+
+// EDITAR PRODUCTOS PAGINA ADMINISTRADOR ✅
+app.put("/administracion/productos/:id", (req, res) => {
+  const { id } = req.params;
+  const { nombre, descripcion, precio, categoria, stock, imagen } = req.body;
+
+  const sql =
+    "UPDATE productos SET nombre = ?, descripcion = ?, precio = ?, categoria = ?, stock = ?, imagen = ? WHERE id = ?";
+
+  db.query(
+    sql,
+    [nombre, descripcion, precio, categoria, stock, imagen, id],
+    (err, result) => {
+      if (err) return res.status(500).json({ error: "Error al actualizar" });
+      res.json({ mensaje: "Producto actualizado con éxito" });
     },
   );
 });
