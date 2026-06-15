@@ -2,6 +2,7 @@ console.log("Script cargado correctamente");
 
 // Capturar formulario
 const formulario = document.getElementById("formulario");
+const contenedorAlertas = document.getElementById("ContenedorAlert");
 
 if (formulario) {
   formulario.addEventListener("submit", function (event) {
