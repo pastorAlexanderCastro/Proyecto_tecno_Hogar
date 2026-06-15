@@ -69,4 +69,17 @@ app.get("/administracion/productos", (req, res) => {
   });
 });
 
+// ELIMINAR PRODUCTOS PAGINA ADMINISTRADOR ✅
+
+app.delete("/eliminar/productos/id", (req, res) => {
+  db.query(
+    "DELETE FROM productos WHERE id = ?",
+    [req.params.id],
+    (err, result) => {
+      if (err) return res.status(500).json({ error: "Error al eliminar" });
+      res.json({ mensaje: "Eliminado con éxito" });
+    },
+  );
+});
+
 app.listen(3000, () => console.log("Servidor en http://localhost:3000"));

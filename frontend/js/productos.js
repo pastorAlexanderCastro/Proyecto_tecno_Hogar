@@ -105,8 +105,7 @@ formularioProductos.addEventListener("submit", async (e) => {
   }
 });
 
-// LISTAR PRODUCTOS ADMINISTRADOR
-//AGREGAR PRODUCTOS A LA PAGINA ADMINISTRACIÓN
+//AGREGAR PRODUCTOS A LA PAGINA ADMINISTRACIÓN ✅
 document.addEventListener("DOMContentLoaded", cargarProductosAdministracion);
 async function cargarProductosAdministracion() {
   try {
@@ -140,3 +139,43 @@ async function cargarProductosAdministracion() {
     console.error("Error al cargar:", error);
   }
 }
+
+// ELIMINAR PRODUCOS ✅
+const tablaProductos = document.getElementById("tabla-productos");
+tablaProductos.addEventListener("click", async (e) => {
+  console.log("Esto arranca");
+
+  // Verificamos si el elemento clicado tiene la clase 'btn-eliminar'
+  if (e.target.classList.contains("btn-eliminar")) {
+    // Obtenemos el ID desde el atributo 'data-id' del botón
+    const id = e.target.getAttribute("data-id");
+    alert(id);
+
+    // Pedimos confirmación al usuario
+    if (confirm("¿Estás seguro de que quieres eliminar este producto?")) {
+      try {
+        // Enviamos la petición DELETE al servidor
+        const respuesta = await fetch(
+          `http://localhost:3000/eliminar/productos/${id}`,
+          {
+            method: "DELETE",
+          },
+        );
+
+        // Convertimos la respuesta para leer el mensaje
+        const resultado = await respuesta.json();
+
+        if (respuesta.ok) {
+          // Si todo salió bien, mostramos el mensaje y refrescamos la tabla
+          alert(resultado.mensaje);
+          cargarProductosAdministracion(); // ¡La tabla se actualiza sola!
+        } else {
+          alert("Error: " + resultado.error);
+        }
+      } catch (error) {
+        console.error("Error de conexión:", error);
+        alert("No se pudo conectar con el servidor");
+      }
+    }
+  }
+});
