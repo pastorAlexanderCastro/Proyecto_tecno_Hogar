@@ -1,3 +1,5 @@
+//CARGAR PRODUCTOS A LA PAGINA PRODUCTOS✅
+
 document.addEventListener("DOMContentLoaded", cargarProductosDesdeBD);
 async function cargarProductosDesdeBD() {
   try {
@@ -62,3 +64,42 @@ async function cargarProductosDesdeBD() {
     console.error("Hubo un error al conectar con el servidor:", error);
   }
 }
+
+// AGREGAR PRODUCTOS ✅
+
+// funcion para Guardar nuevos productos.
+const formularioProductos = document.getElementById("form-producto");
+
+formularioProductos.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const formData = new FormData(e.target);
+  const datos = Object.fromEntries(formData.entries());
+
+  // Asegurarse de que precio y stock sean números
+  datos.precio = parseFloat(datos.precio);
+  datos.stock = parseInt(datos.stock);
+
+  try {
+    const respuesta = await fetch("http://localhost:3000/agregar", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(datos),
+    });
+
+    if (respuesta.ok) {
+      const contenedorAlerta = document.getElementById("contenedor-alert");
+      contenedorAlerta.innerHTML = `<p class="text-success">El producto se guardo con exito</p>`;
+
+      setTimeout(() => {
+        contenedorAlerta.innerHTML = "";
+      }, 3000);
+      e.target.reset();
+      await cargarProductosAdministracion();
+    } else {
+      alert("Error al guardar el producto");
+    }
+  } catch (error) {
+    console.error("Error de conexión:", error);
+  }
+});

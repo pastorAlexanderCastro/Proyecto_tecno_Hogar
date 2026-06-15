@@ -1,4 +1,4 @@
-const express = require("express");
+/*const express = require("express");
 const mysql = require("mysql2");
 const cors = require("cors");
 
@@ -99,7 +99,7 @@ const cors = require("cors");
 const app = express();
 */
 
-app.use(cors());
+/*app.use(cors());
 app.use(express.json());
 
 const db = mysql.createConnection({
@@ -123,7 +123,7 @@ db.connect((err) => {
     res.json(results);
   });
 });*/
-app.get("/productos", (req, res) => {
+/*app.get("/productos", (req, res) => {
   // Le pedimos a MySQL que traiga todo de la tabla productos
   const sql = "SELECT * FROM productos";
 
@@ -188,4 +188,4 @@ app.delete("/administracion/productos/:id", (req, res) => {
   );
 });
 
-app.listen(3000, () => console.log("Servidor en http://localhost:3000"));
+app.listen(3000, () => console.log("Servidor en http://localhost:3000"));*/
