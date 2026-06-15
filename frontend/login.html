@@ -1,14 +1,20 @@
-<!doctype html>
-<html lang="es">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8" />
+    <meta name="description" content="Mi primera página Web" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administrar Productos - TecnoHogar</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="css/estilos.css" />
+    <!--Boostrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Login</title>
 </head>
 
-<body class="bg-light">
+<body>
+    <!--herader-->
     <header class="bg-light shadow-sm">
         <nav class="navbar navbar-expand-md navbar-light">
             <div class="container">
@@ -36,65 +42,41 @@
             </div>
         </nav>
     </header>
+    <main class="d-flex vh-100 align-items-center justify-content-center bg-light">
+        <div class="card p-4 shadow" style="width: 100%; max-width: 600px;">
+            <h1 class="text-center mb-4">Registro</h1>
 
-    <main>
-        <h1 class="mb-4 text-center">Gestión de Inventario</h1>
+            <form id="formLogin" class=" row g-3 needs-validation" novalidate>
 
-        <section class="card shadow-sm p-4 mb-5">
-            <h3 class="mb-3">Agregar Nuevo Producto</h3>
-            <form id="form-producto" class="row g-3">
-                <div class="col-md-6">
-                    <label class="form-label">Nombre</label>
-                    <input name="nombre" type="text" class="form-control" required>
-                </div>
-                <div class="col-md-6">
-                    <label class="form-label">Categoría</label>
-                    <input name="categoria" type="text" class="form-control" required>
-                </div>
                 <div class="col-12">
-                    <label class="form-label">Descripción</label>
-                    <textarea name="descripcion" class="form-control" rows="2" required></textarea>
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input name="nombre" id="nombre" type="text" class="form-control is-valid" id="nombre" value="Mark"
+                        required>
+                    <div class="valid-feedback">Looks good!</div>
                 </div>
-                <div class="col-md-4">
-                    <label class="form-label">Precio ($)</label>
-                    <input name="precio" type="number" class="form-control" required>
+
+                <div class="col-12">
+                    <label for="correo" class="form-label">Correo</label>
+                    <div class="input-group has-validation">
+                        <span class="input-group-text">@</span>
+                        <input type="email" class="form-control is-invalid" id="correo" required>
+                        <div class="invalid-feedback">Please choose a username.</div>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <label class="form-label">Stock</label>
-                    <input name="stock" type="number" class="form-control" required>
+
+                <div class="col-12">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control is-invalid" id="password" required>
+                    <div class="invalid-feedback">Por favor Agregar una contraseña valida.</div>
                 </div>
-                <div class="col-md-4">
-                    <label class="form-label">URL de Imagen</label>
-                    <input name="imagen" type="text" class="form-control" placeholder="https://..." required>
-                </div>
-                <div id="contenedor-alert" class="col-12 mt-2"></div>
-                <div class=" d-flex col-12">
-                    <button type="submit" class="btn btn-primary px-4">Guardar Producto</button>
+
+                <div class="d-flex justify-content-evenly mt-4">
+                    <button class="btn btn-primary w-25" type="submit">Iniciar</button>
+                    <button class="btn btn-secondary w-25" type="reset">Registrarse</button>
                 </div>
 
             </form>
-        </section>
-
-        <section id="contenedor-administracion" class=" card shadow-sm p-4">
-            <h3 class="mb-3">Productos Disponibles</h3>
-            <div class="table-responsive">
-                <table class="table table-hover align-middle">
-                    <thead class="table-light">
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Categoría</th>
-                            <th>Precio</th>
-                            <th>Stock</th>
-                            <th>imagen</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tabla-productos">
-
-                    </tbody>
-                </table>
-            </div>
-        </section>
+        </div>
     </main>
     <footer class="bg-dark text-white pt-5 pb-3">
         <div class="container">
@@ -127,12 +109,17 @@
             </div>
 
             <hr class="border-secondary">
-            <p class="text-center text-secondary mb-0">&copy; 2026 TecnoHogar. Todos los derechos reservados.</p>
+            <p class="text-center text-secondary mb-0">
+                &copy; 2026 TecnoHogar. Todos los derechos reservados.
+            </p>
         </div>
     </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="./js/productos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+        integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
