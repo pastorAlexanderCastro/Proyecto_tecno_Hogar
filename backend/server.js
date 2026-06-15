@@ -2,7 +2,6 @@ const express = require("express");
 const mysql = require("mysql2");
 const cors = require("cors");
 
-
 const app = express();
 
 // Permitir comunicación con frontend
@@ -31,30 +30,8 @@ app.get("/", (req, res) => {
   res.send("Servidor conectado a MySQL");
 });
 
-// ✅ RUTA PARA GUARDAR DATOS
-app.post("/guardar", (req, res) => {
-  const { nombre, correo, mensaje } = req.body;
 
-  console.log("Datos recibidos:", req.body);
-
-  if (!nombre || !correo || !mensaje) {
-    return res.status(400).send("Datos incompletos");
-  }
-
-  const sql =
-    "INSERT INTO contactos (nombre, correo, mensaje) VALUES (?, ?, ?)";
-
-  db.query(sql, [nombre, correo, mensaje], (err, result) => {
-    if (err) {
-      console.error("Error SQL:", err);
-      return res.status(500).send("Error en servidor");
-    }
-
-    console.log("Registro insertado:", result);
-    res.send("Datos guardados correctamente");
-  });
-});
-
+// lista de Productos pagina productos.html
 app.get("/productos", (req, res) => {
   // Le pedimos a MySQL que traiga todo de la tabla productos
   const sql = "SELECT * FROM productos";
@@ -67,9 +44,4 @@ app.get("/productos", (req, res) => {
     // Si todo sale bien, enviamos los datos en formato JSON
     res.json(results);
   });
-});
-
-// Iniciar servidor
-app.listen(3000, () => {
-  console.log("Servidor en http://localhost:3000");
 });
