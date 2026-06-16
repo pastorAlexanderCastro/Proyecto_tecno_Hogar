@@ -38,7 +38,7 @@ async function cargarProductosDesdeBD() {
     contenedor.innerHTML = "";
     productos.forEach((p) => {
       const tarjeta = document.createElement("article");
-      tarjeta.className = "col-md-4 mb-4";
+      tarjeta.className = "col-md-3 mb-4";
       tarjeta.innerHTML = `
         <div class="card h-100 shadow-sm">
           <img src="${p.imagen}" class="card-img-top" alt="${p.descripcion}" style="height: 180px; object-fit: cover;">
