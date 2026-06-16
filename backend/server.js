@@ -119,6 +119,25 @@ app.post("/login", (req, res) => {
   });
 });
 
+// // AGREGAR CONTACTO - ESTO FALTABA
+app.post("/guardar", (req, res) => {
+  const { nombre, correo, mensaje } = req.body;
+
+  // IMPORTANTE: Asegúrate de que esta tabla 'contactos' exista en tu BD
+  const sql =
+    "INSERT INTO contactos (nombre, correo, mensaje) VALUES (?, ?, ?)";
+
+  db.query(sql, [nombre, correo, mensaje], (err, result) => {
+    if (err) {
+      console.error("Error al guardar contacto:", err);
+      return res
+        .status(500)
+        .json({ error: "Error al guardar en base de datos" });
+    }
+    res.status(201).json({ mensaje: "Contacto guardado con éxito" });
+  });
+});
+
 app.listen(3000, () => {
   console.log("Servidor corriendo en http://localhost:3000");
 });
