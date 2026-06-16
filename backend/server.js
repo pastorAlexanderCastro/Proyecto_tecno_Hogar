@@ -99,4 +99,29 @@ app.put("/administracion/productos/:id", (req, res) => {
   );
 });
 
-app.listen(3000, () => console.log("Servidor en http://localhost:3000"));
+// LOGIN
+app.post("/login", (req, res) => {
+  const { correo, password } = req.body;
+  if (!correo || !password) {
+    return res
+      .status(400)
+      .json({ ok: false, mensaje: "Correo y contraseña son obligatorios" });
+  }
+  const sql =
+    "SELECT id, nombre, correo, rol FROM usuarios WHERE correo = ? AND password = ?";
+  db.query(sql, [correo, password], (err, resultados) => {
+    if (err) {
+      console.error("Error SQL:", err);
+      return res
+        .status(500)
+        .json({ ok: false, mensaje: "Error en el servidor" });
+    }
+    if (resultados.length === 0) {
+      return res
+        .status(401)
+        .json({ ok: false, mensaje: "Credenciales incorrectas" });
+    }
+    app.listen(3000, () => console.log("Servidor en http://localhost:3000"));
+    res.json({ ok: true, mensaje: "Ingreso correcto", usuario: resultados[0] });
+  });
+});

@@ -72,7 +72,7 @@ async function cargarProductosAdministracion() {
         <td>${p.categoria}</td>
         <td>$${p.precio}</td>
         <td>${p.stock}</td>
-        <td><img src="${p.imagen}" width="50" alt="${p.nombre}"></td>
+        <td><img src="${p.imagen}" width="75" height="75" alt="${p.nombre}"></td>
         <td>
           <button type="button" class="btn btn-sm btn-warning btn-editar" data-id="${p.id}">Editar</button>
           <button type="button" class="btn btn-sm btn-danger btn-eliminar" data-id="${p.id}">Eliminar</button>
