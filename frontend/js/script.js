@@ -41,12 +41,18 @@ if (formulario) {
       .then((res) => res.text())
       .then((data) => {
         console.log("Respuesta servidor:", data);
-        respuesta.textContent = "Datos guardados en MySQL correctamente";
+        respuesta.textContent = "Tus datos fueron enviados correctamente";
         formulario.reset();
+        setTimeout(() => {
+          respuesta.textContent = "";
+        }, 3000);
       })
       .catch((error) => {
         console.error("Error:", error);
         respuesta.textContent = "Error al guardar los datos";
+        setTimeout(() => {
+          respuesta.textContent = "";
+        }, 3000);
       });
   });
 }
