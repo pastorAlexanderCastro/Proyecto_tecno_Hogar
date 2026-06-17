@@ -27,13 +27,24 @@
                 </button>
 
                 <div class="collapse navbar-collapse " id="menuTecnoHogar">
-                    <ul class="navbar-nav ms-auto   ">
-                        <li class="nav-item "><a class=" nav-link" href="index.html">Inicio</a></li>
+                    <ul id="nav" class="navbar-nav ms-auto gap-2   ">
+                        <li class="nav-item "><a class="r nav-link" href="index.html">Inicio</a>
+                        </li>
                         <li class="nav-item"><a class=" nav-link" href="ayuda.html">Ayuda</a></li>
-                        <li class=" nav-item"><a class=" fw-bold  text-tecnohogar  nav-link"
+                        <li class="nav-item"><a class="fw-bold text-tecnohogar nav-link"
                                 href="contacto.html">Contacto</a></li>
                         <li class="nav-item"><a class=" nav-link" href="productos.html">Productos</a></li>
                         <li class="nav-item"><a class=" nav-link" href="login.html">Login</a></li>
+
+                    </ul>
+                    <ul class="navbar-nav ms-auto d-flex justify-content-center align-items-center">
+                        <li class=" h-auto gap-3">
+                            <span class="text-primary fw-bold">Cerrar Seccion</span><img id="cerrar-seccion"
+                                class="  icono-cerrar" src="./img/logout_24dp_F19E39_FILL0_wght400_GRAD0_opsz24.svg"
+                                alt="">
+                        </li>
+
+
                     </ul>
                 </div>
 
@@ -127,6 +138,7 @@
         crossorigin="anonymous"></script>
 
     <script src="js/script.js"></script>
+    <script src="js/auth.js"></script>
 </body>
 
 </html>

@@ -1,10 +1,16 @@
 const formLogin = document.getElementById("formLogin");
 const mensajeLogin = document.getElementById("mensajeLogin");
+
+
+
 formLogin.addEventListener("submit", async function (event) {
   event.preventDefault();
   const correo = document.getElementById("correo");
   const password = document.getElementById("password");
   const nombre = document.getElementById("nombre");
+
+  /* <li id="i" class="nav-item"><a class=" nav-link" href="admin-productos.html">Administración</a></li>*/
+
   try {
     const respuesta = await fetch("http://localhost:3000/login", {
       method: "POST",
@@ -18,8 +24,10 @@ formLogin.addEventListener("submit", async function (event) {
       nombre.classList.add("is-valid");
       correo.classList.add("is-valid");
       password.classList.add("is-valid");
+
       setTimeout(() => {
         window.location.href = "admin-productos.html";
+        agrgarNav();
       }, 1000);
     } else {
       mensajeLogin.innerHTML = `<div class="alert alert-danger">${datos.mensaje}</div>`;

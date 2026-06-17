@@ -20,6 +20,32 @@ main {
   /* Centra la imagen para que el recorte sea parejo */
 }
 
+
+
+.icono-cerrar {
+  width: 35px;
+  cursor: pointer;
+  /* Muestra la manita */
+  transition: transform 0.2s, opacity 0.2s;
+  /* Animación suave */
+  border-radius: 8px;
+  /* Opcional: suaviza bordes */
+}
+
+/* Efecto al pasar el ratón (Hover) */
+.icono-cerrar:hover {
+  opacity: 0.8;
+  /* Un ligero desvanecimiento */
+  transform: scale(1.05);
+  /* Un pequeño aumento de tamaño */
+}
+
+/* Efecto al hacer clic (Active) */
+.icono-cerrar:active {
+  transform: scale(0.95);
+  /* Se "encoge" ligeramente al pulsar */
+}
+
 .bg-tecnohogar {
   background-color: #fd8720 !important;
 }

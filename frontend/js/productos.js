@@ -194,7 +194,10 @@ if (tablaProductos) {
   });
 }
 
+
+
 document.addEventListener("DOMContentLoaded", () => {
   cargarProductosDesdeBD();
   cargarProductosAdministracion();
+  
 });
