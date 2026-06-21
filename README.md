@@ -76,20 +76,6 @@ El sitio permite a los usuarios explorar productos tecnológicos para el hogar, 
 
 ### Capturas de pantalla
 
-- Inserta aquí capturas de las páginas principales:
-  - Página de inicio (`index.html`).
-  - Página de productos (`productos.html`).
-  - Panel administrativo (`admin-productos.html`).
-  - Formulario de contacto (`contacto.html`).
-
-### Notas adicionales
-
-- Ajusta la configuración de MySQL en `backend/server.js` según los datos locales.
-- Asegúrate de que la base de datos y las tablas necesarias existan antes de ejecutar el servidor.
-- Usa un servidor local como Live Server para abrir las páginas del frontend.
-
-## Espacio para capturas de pantalla
-
 ### 1. Inicio
 
 ![Captura de Pagina Inicio](./frontend/img/PaginaInicio.png)
